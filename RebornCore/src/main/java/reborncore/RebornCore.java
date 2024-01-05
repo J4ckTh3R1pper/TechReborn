@@ -119,7 +119,7 @@ public class RebornCore implements ModInitializer {
 
 		ServerEntityEvents.EQUIPMENT_CHANGE.register((livingEntity, equipmentSlot, previousStack, currentStack) -> {
 			if (livingEntity instanceof PlayerEntity playerEntity
-				&& previousStack.getItem() instanceof ArmorRemoveHandler armorRemoveHandler) {
+				&& previousStack.getItem() instanceof ArmorRemoveHandler armorRemoveHandler && previousStack.getItem() != currentStack.getItem()) {
 				armorRemoveHandler.onRemoved(playerEntity);
 			}
 		});

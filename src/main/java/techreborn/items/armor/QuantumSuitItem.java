@@ -102,10 +102,12 @@ public class QuantumSuitItem extends TRArmourItem implements ArmorBlockEntityTic
 						if (playerEntity.getAbilities().flying) {
 							tryUseEnergy(stack, flyCost);
 						}
+						playerEntity.sendAbilitiesUpdate();
 						playerEntity.setOnGround(true);
 					} else {
 						playerEntity.getAbilities().allowFlying = false;
 						playerEntity.getAbilities().flying = false;
+						playerEntity.sendAbilitiesUpdate();
 					}
 				}
 				if (playerEntity.isOnFire() && getStoredEnergy(stack) > fireExtinguishCost) {
@@ -140,6 +142,7 @@ public class QuantumSuitItem extends TRArmourItem implements ArmorBlockEntityTic
 			if (!playerEntity.isCreative() && !playerEntity.isSpectator()) {
 				playerEntity.getAbilities().allowFlying = false;
 				playerEntity.getAbilities().flying = false;
+				playerEntity.sendAbilitiesUpdate();
 			}
 		}
 	}
